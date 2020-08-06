@@ -180,7 +180,7 @@ class CourseCardModel extends Backbone.Model {
   setActiveCourseRun(courseRun, userPreferences) {
     let startDateString;
     let courseTitleLink = '';
-    const isEnrolled = this.isEnrolledInSession() && courseRun.key;
+    const isEnrolled = this.isEnrolledInSession();
     if (courseRun) {
       if (CourseCardModel.valueIsDefined(courseRun.advertised_start)) {
         startDateString = courseRun.advertised_start;
