@@ -295,16 +295,12 @@ class RegistrationFormFactory(object):
     Construct Registration forms and associated fields.
     """
 
-    DEFAULT_FIELDS = ["email", "name", "username", "password"]
+    DEFAULT_FIELDS = ["email", "name", "username", "password","city","state","country","gender"]
 
     EXTRA_FIELDS = [
         "confirm_email",
         "first_name",
         "last_name",
-        "city",
-        "state",
-        "country",
-        "gender",
         "year_of_birth",
         "level_of_education",
         "company",
@@ -937,7 +933,7 @@ class RegistrationFormFactory(object):
         else:
             # Translators: This is a legal document users must agree to
             # in order to register a new account.
-            terms_label = _(u"Terms of Service and Honor Code")
+            terms_label = _(u"Terms of Service")
             terms_link = marketing_link("HONOR")
 
         # Translators: "Terms of Service" is a legal document users must agree to
@@ -962,14 +958,12 @@ class RegistrationFormFactory(object):
         field_type = 'checkbox'
 
         if not separate_honor_and_tos:
-            field_type = 'plaintext'
+            field_type = 'checkbox'
 
             pp_link = marketing_link("PRIVACY")
             label = Text(_(
-                u"By creating an account, you agree to the \
-                  {terms_of_service_link_start}{terms_of_service}{terms_of_service_link_end} \
-                  and you acknowledge that {platform_name} and each Member process your personal data in accordance \
-                  with the {privacy_policy_link_start}Privacy Policy{privacy_policy_link_end}."
+                u"I agree to the {platform_name} \
+                  {terms_of_service_link_start}{terms_of_service}{terms_of_service_link_end}."
             )).format(
                 platform_name=configuration_helpers.get_value("PLATFORM_NAME", settings.PLATFORM_NAME),
                 terms_of_service=terms_label,
